@@ -95,6 +95,7 @@ Retorno:
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/servidores`                                 | GET | Lista todos os servidores presentes no banco de dados |
+Retorno:
 ```javascript
 [
     {
@@ -122,6 +123,7 @@ Retorno:
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/servidores/{id}`                             | GET | Busca de servidor baseado no Id salvo no banco de dados |
+Retorno:
 ```javascript
     {
         "id": 1,
@@ -167,15 +169,232 @@ Retorno:
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/servidores/{id}`                               | DELETE | Deleta cadastro do servidor|
-Retorno: Servidor Deletado com sucesso
+Retorno:
+Servidor Deletado com sucesso
 
 *Especialização*
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes`                                 | POST | Salva a especialização no banco de dados|
+Exemplo de request: 
+```javascript
+{
+    "area": "Engenharia de Software",
+    "tipo": "POS_GRADUACAO",
+    "cargaHoraria": 360,
+    "valorTotal": 15000.00,
+    "servidorId": 1
+}
+```
+Exemplo de Retorno:
+```javascript
+{
+    "id": 4,
+    "area": "Engenharia de Software",
+    "tipo": "POS_GRADUACAO",
+    "cargaHoraria": 360,
+    "valorTotal": 15000.0,
+    "servidor": {
+        "id": 1,
+        "cpf": "123.687.987-00",
+        "email": "danibl26@gmail.com",
+        "matricula": "2024201",
+        "nome": "Dani Botelho",
+        "dataNascimento": "1980-01-01",
+        "sexo": "Feminino",
+        "tipo": "TECNICO"
+    },
+    "status": "PENDENTE",
+    "motivoIndeferimento": null
+}
+```
+
+|  URL |  Método | Descrição |
+|----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes`                                 | GET | Lista todos as especializações presentes no banco de dados |
+Exemplo de Retorno:
+```javascript
+[
+    {
+        "id": 1,
+        "area": "Engenharia de Software",
+        "tipo": "POS_GRADUACAO",
+        "cargaHoraria": 360,
+        "valorTotal": 15000.0,
+        "servidor": {
+            "id": 1,
+            "cpf": "123.687.987-00",
+            "email": "danibl26@gmail.com",
+            "matricula": "2024201",
+            "nome": "Dani Botelho",
+            "dataNascimento": "1980-01-01",
+            "sexo": "Feminino",
+            "tipo": "TECNICO"
+        },
+        "status": "DEFERIDO",
+        "motivoIndeferimento": null
+    },
+    {
+        "id": 2,
+        "area": "Agronomia",
+        "tipo": "POS_GRADUACAO",
+        "cargaHoraria": 360,
+        "valorTotal": 15000.0,
+        "servidor": {
+            "id": 1,
+            "cpf": "123.687.987-00",
+            "email": "danibl26@gmail.com",
+            "matricula": "2024201",
+            "nome": "Dani Botelho",
+            "dataNascimento": "1980-01-01",
+            "sexo": "Feminino",
+            "tipo": "TECNICO"
+        },
+        "status": "INDEFERIDO",
+        "motivoIndeferimento": "Falta de documentação necessária"
+    },
+    {
+        "id": 3,
+        "area": "Agronomia",
+        "tipo": "POS_GRADUACAO",
+        "cargaHoraria": 360,
+        "valorTotal": 15000.0,
+        "servidor": {
+            "id": 2,
+            "cpf": "123.687.987-55",
+            "email": "contato@goatsd.com",
+            "matricula": "2024301",
+            "nome": "Contato Goat",
+            "dataNascimento": "1980-01-01",
+            "sexo": "Masculino",
+            "tipo": "PROFESSOR"
+        },
+        "status": "DEFERIDO",
+        "motivoIndeferimento": null
+    }
+]
+```
+|  URL |  Método | Descrição |
+|----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes/{id}`                             | GET | Busca de especializacao baseado no Id salvo no banco de dados |
+Retorno:
+```javascript
+{
+    "id": 1,
+    "area": "Engenharia de Software",
+    "tipo": "POS_GRADUACAO",
+    "cargaHoraria": 360,
+    "valorTotal": 15000.0,
+    "servidor": {
+        "id": 1,
+        "cpf": "123.687.987-00",
+        "email": "danibl26@gmail.com",
+        "matricula": "2024201",
+        "nome": "Dani Botelho",
+        "dataNascimento": "1980-01-01",
+        "sexo": "Feminino",
+        "tipo": "TECNICO"
+    },
+    "status": "PENDENTE",
+    "motivoIndeferimento": null
+}
+```
+
+|  URL |  Método | Descrição |
+|----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes/{id}`                             | PUT | Edição de especializacao salva no banco de dados |
+Exemplo de request: 
+```javascript
+{
+    "area": "Engenharia de Software",
+    "tipo": "POS_GRADUACAO",
+    "cargaHoraria": 370,
+    "valorTotal": 20000.00,
+    "servidorId": 1
+}
+```
+Exemplo de Retorno:
+```javascript
+{
+    "id": 1,
+    "area": "Engenharia de Software",
+    "tipo": "POS_GRADUACAO",
+    "cargaHoraria": 370,
+    "valorTotal": 20000.0,
+    "servidor": {
+        "id": 1,
+        "cpf": "123.687.987-00",
+        "email": "danibl26@gmail.com",
+        "matricula": "2024201",
+        "nome": "Dani Botelho",
+        "dataNascimento": "1980-01-01",
+        "sexo": "Feminino",
+        "tipo": "TECNICO"
+    },
+    "status": "DEFERIDO",
+    "motivoIndeferimento": null
+}
+```
+|  URL |  Método | Descrição |
+|----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes/{id}`                               | DELETE | Deleta cadastro do especilizacao|
+Retorno:
+Especialização Deletada com sucesso
+
+|  URL |  Método | Descrição |
+|----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes/deferir/{id}`                               | PUT | Defere a especialização pendente e realiza envio de email para o servidor informando o sucesso no deferimento|
+Exemplo de Retorno:
+```javascript
+{
+    "id": 1,
+    "area": "Engenharia de Software",
+    "tipo": "POS_GRADUACAO",
+    "cargaHoraria": 370,
+    "valorTotal": 20000.0,
+    "servidor": {
+        "id": 1,
+        "cpf": "123.687.987-00",
+        "email": "danibl26@gmail.com",
+        "matricula": "2024201",
+        "nome": "Dani Botelho",
+        "dataNascimento": "1980-01-01",
+        "sexo": "Feminino",
+        "tipo": "TECNICO"
+    },
+    "status": "DEFERIDO",
+    "motivoIndeferimento": null
+}
+```
+|  URL |  Método | Descrição |
+|----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes/indeferir/{id}`                               | PUT | Indefere a especialização pendente e realiza envio de email para o servidor informando o motivo do indeferimento|
+Exemplo de request:
+```javascript
+{
+  "motivoIndeferimento": "Falta de documentação necessária"
+}
+```
+
+Exemplo de Retorno:
+```javascript
+{
+    "id": 1,
+    "area": "Engenharia de Software",
+    "tipo": "POS_GRADUACAO",
+    "cargaHoraria": 370,
+    "valorTotal": 20000.0,
+    "servidor": {
+        "id": 1,
+        "cpf": "123.687.987-00",
+        "email": "danibl26@gmail.com",
+        "matricula": "2024201",
+        "nome": "Dani Botelho",
+        "dataNascimento": "1980-01-01",
+        "sexo": "Feminino",
+        "tipo": "TECNICO"
+    },
+    "status": "DEFERIDO",
+    "motivoIndeferimento": null
+}
+```
