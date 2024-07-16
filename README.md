@@ -27,8 +27,11 @@ Este projeto é parte do teste técnico para a vaga de Desenvolvedor Backend Jr 
 - Exclusão de cadastro de Servidores e Especializações pelo seu respectivo id
 - Deferimento e Indeferimento de Especializações com envio de email nos casos de deferimento e indeferimento (informando o motivo) para o email cadastrado do servidor
 
+###Considerações:
+- Teste 
 
 *Endpoints / URL's*
+
 *Auth*
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
