@@ -52,5 +52,5 @@ Este projeto é parte do teste técnico para a vaga de Desenvolvedor Backend Jr 
 |`http://localhost:8080/api/v1/especializacoes/{id}`                             | GET | Busca de especializacao baseado no Id salvo no banco de dados |
 |`http://localhost:8080/api/v1/especializacoes/{id}`                             | PUT | Edição de especializacao salva no banco de dados |
 |`http://localhost:8080/api/v1/especializacoes/{id}`                               | DELETE | Deleta cadastro do especilizacao|
-|`http://localhost:8080/api/v1/especializacoes/deferir/{id}`                               | PUT | Defere a especialização pendente|
-|`http://localhost:8080/api/v1/especializacoes/indeferir/{id}`                               | PUT | Indefere a especialização pendente|
+|`http://localhost:8080/api/v1/especializacoes/deferir/{id}`                               | PUT | Defere a especialização pendente e realiza envio de email para o servidor informando o sucesso no deferimento|
+|`http://localhost:8080/api/v1/especializacoes/indeferir/{id}`                               | PUT | Indefere a especialização pendente e realiza envio de email para o servidor informando o motivo do indeferimento|
