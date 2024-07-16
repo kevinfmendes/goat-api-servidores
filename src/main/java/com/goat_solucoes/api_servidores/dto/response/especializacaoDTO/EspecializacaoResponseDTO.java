@@ -7,8 +7,11 @@ import com.goat_solucoes.api_servidores.dto.response.servidorDTO.ServidorRespons
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.websocket.server.ServerEndpoint;
 import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Getter
 public class EspecializacaoResponseDTO {
 

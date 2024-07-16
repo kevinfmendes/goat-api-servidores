@@ -3,9 +3,11 @@ package com.goat_solucoes.api_servidores.dto.response.servidorDTO;
 import com.goat_solucoes.api_servidores.domain.enums.TipoServidor;
 import com.goat_solucoes.api_servidores.domain.servidor.Servidor;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Setter
 @Getter
 public class ServidorResponseDTO {
 
@@ -34,6 +36,5 @@ public class ServidorResponseDTO {
         this.dataNascimento = servidor.getDataNascimento();
         this.sexo = servidor.getSexo();
         this.tipo = servidor.getTipo();
-
     }
 }

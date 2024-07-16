@@ -2,9 +2,11 @@ package com.goat_solucoes.api_servidores.dto.request.servidorRequestDTO;
 
 import com.goat_solucoes.api_servidores.domain.enums.TipoServidor;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Setter
 @Getter
 public class ServidorRequestDTO {
 
