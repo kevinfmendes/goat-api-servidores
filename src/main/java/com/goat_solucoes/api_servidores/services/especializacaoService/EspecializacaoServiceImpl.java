@@ -5,9 +5,12 @@ import com.goat_solucoes.api_servidores.domain.especializacao.Especializacao;
 import com.goat_solucoes.api_servidores.dto.request.especializacaoRequestDTO.EspecializacaoRequestDTO;
 import com.goat_solucoes.api_servidores.dto.response.especializacaoDTO.EspecializacaoResponseDTO;
 import com.goat_solucoes.api_servidores.repositorios.EspecializacaoRepositorio;
+import com.goat_solucoes.api_servidores.services.mailService.EmailService;
+import com.goat_solucoes.api_servidores.services.servidorServices.ServidorService;
 import com.goat_solucoes.api_servidores.utils.especializacaoMapper.EspecializacaoMapper;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,12 @@ import java.util.List;
 @Primary
 @RequiredArgsConstructor
 public class EspecializacaoServiceImpl implements EspecializacaoService {
+
+    @Autowired
+    private EmailService emailService;
+
+    @Autowired
+    private ServidorService servidorService;
 
     private final EspecializacaoRepositorio especializacaoRepositorio;
 
@@ -56,7 +65,15 @@ public class EspecializacaoServiceImpl implements EspecializacaoService {
     public EspecializacaoResponseDTO deferir(Long id) {
         Especializacao especializacao = returnEspecializacao(id);
         especializacao.setStatus(StatusEspecializacao.DEFERIDO);
-        return especializacaoMapper.toEspecializacaoDTO(especializacaoRepositorio.save(especializacao));
+        Especializacao savedEspecializacao = especializacaoRepositorio.save(especializacao);
+        EspecializacaoResponseDTO responseDTO = especializacaoMapper.toEspecializacaoDTO(savedEspecializacao);
+
+        String emailDestinatario = especializacao.getServidor().getEmail();
+        String nomeDestinario = especializacao.getServidor().getNome();
+
+        enviarEmailDeDeferimento(emailDestinatario, nomeDestinario);
+
+        return responseDTO;
     }
 
     @Transactional
@@ -64,11 +81,33 @@ public class EspecializacaoServiceImpl implements EspecializacaoService {
         Especializacao especializacao = returnEspecializacao(id);
         especializacao.setStatus(StatusEspecializacao.INDEFERIDO);
         especializacao.setMotivoIndeferimento(motivoIndeferimento);
-        return especializacaoMapper.toEspecializacaoDTO(especializacaoRepositorio.save(especializacao));
+        Especializacao savedEspecializacao = especializacaoRepositorio.save(especializacao);
+        EspecializacaoResponseDTO responseDTO = especializacaoMapper.toEspecializacaoDTO(savedEspecializacao);
+
+        String emailDestinatario = especializacao.getServidor().getEmail();
+        String nomeDestinario = especializacao.getServidor().getNome();
+
+        enviarEmailDeIndeferimento(emailDestinatario, nomeDestinario, motivoIndeferimento);
+
+        return responseDTO;
     }
 
     private Especializacao returnEspecializacao(Long id){
         return especializacaoRepositorio.findById(id)
                 .orElseThrow(()-> new RuntimeException("Especializacao com id: "+id+ " não encontrado"));
+    }
+
+    private void enviarEmailDeDeferimento(String emailDestinatario, String nomeDestinario) {
+        String assunto = "Especialização Deferida";
+        String mensagem = "Olá, "+nomeDestinario+"! Sua especialização foi deferida com sucesso.";
+
+        emailService.enviarEmail(emailDestinatario, assunto, mensagem);
+    }
+
+    private void enviarEmailDeIndeferimento(String emailDestinatario, String nomeDestinario, String motivoIndeferimento) {
+        String assunto = "Especialização Indeferida";
+        String mensagem = "Olá, "+nomeDestinario+". Sua especialização foi indeferida. Motivo: "+motivoIndeferimento;
+
+        emailService.enviarEmail(emailDestinatario, assunto, mensagem);
     }
 }
