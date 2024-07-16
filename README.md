@@ -1,4 +1,4 @@
-# goat-api-servidores - Kevin Mendes
+# API Teste Técnico GOAT - Kevin Mendes
 API desenvolvida como parte do processo seletivo para vaga de Desenvolvedor Backend Jr. na GOAT Soluções Digitais
 
 ## Backend Java
