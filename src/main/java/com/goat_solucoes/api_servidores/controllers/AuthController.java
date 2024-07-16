@@ -56,14 +56,14 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody UserRequestDTO data){
-        if(this.userRepositorio.findByLogin(data.getLogin()) != null) return ResponseEntity.badRequest().build();
+        if(this.userRepositorio.findByLogin(data.getLogin()).isPresent()) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.getPassword());
 
         User newUser = new User(data.getLogin(), encryptedPassword, data.getTipo());
         this.userRepositorio.save(newUser);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body("Usuário criado com sucesso");
     }
 
 }
