@@ -27,8 +27,9 @@ Este projeto é parte do teste técnico para a vaga de Desenvolvedor Backend Jr 
 - Exclusão de cadastro de Servidores e Especializações pelo seu respectivo id
 - Deferimento e Indeferimento de Especializações com envio de email nos casos de deferimento e indeferimento (informando o motivo) para o email cadastrado do servidor
 
-###Considerações:
-- Teste 
+Considerações:
+- Além dos requisitos necessários informados na descrição do teste, tomei a liberdade para a criação da entidade de usuário pela necessidade de aplicar a autenticação e autorização das requisições através da abordagem do JWT.
+- Na entidade de Especializações adicionei o campo de status para definir o estado da especialização como pendente/deferido/indeferido, além de relacionar as classes Servidor x Especialização, para que a criação de  
 
 *Endpoints / URL's*
 
