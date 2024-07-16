@@ -67,6 +67,7 @@ eyJhbGciOiJIUzI1NiIsIn (exemplo de token)
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/servidores`                                 | POST | Salva o servidor no banco de dados |
+
 Exemplo de request: 
 ```javascript
 {
@@ -95,6 +96,7 @@ Retorno:
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/servidores`                                 | GET | Lista todos os servidores presentes no banco de dados |
+
 Retorno:
 ```javascript
 [
@@ -123,6 +125,7 @@ Retorno:
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/servidores/{id}`                             | GET | Busca de servidor baseado no Id salvo no banco de dados |
+
 Retorno:
 ```javascript
     {
@@ -140,6 +143,7 @@ Retorno:
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/servidores/{id}`                             | PUT | Edição de servidor salvo no banco de dados |
+
 Exemplo de request: 
 ```javascript
 {
@@ -169,6 +173,7 @@ Retorno:
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/servidores/{id}`                               | DELETE | Deleta cadastro do servidor|
+
 Retorno:
 Servidor Deletado com sucesso
 
@@ -176,6 +181,7 @@ Servidor Deletado com sucesso
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes`                                 | POST | Salva a especialização no banco de dados|
+
 Exemplo de request: 
 ```javascript
 {
@@ -212,6 +218,7 @@ Exemplo de Retorno:
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes`                                 | GET | Lista todos as especializações presentes no banco de dados |
+
 Exemplo de Retorno:
 ```javascript
 [
@@ -274,9 +281,11 @@ Exemplo de Retorno:
     }
 ]
 ```
+
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes/{id}`                             | GET | Busca de especializacao baseado no Id salvo no banco de dados |
+
 Retorno:
 ```javascript
 {
@@ -303,6 +312,7 @@ Retorno:
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes/{id}`                             | PUT | Edição de especializacao salva no banco de dados |
+
 Exemplo de request: 
 ```javascript
 {
@@ -335,15 +345,18 @@ Exemplo de Retorno:
     "motivoIndeferimento": null
 }
 ```
+
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes/{id}`                               | DELETE | Deleta cadastro do especilizacao|
+
 Retorno:
 Especialização Deletada com sucesso
 
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes/deferir/{id}`                               | PUT | Defere a especialização pendente e realiza envio de email para o servidor informando o sucesso no deferimento|
+
 Exemplo de Retorno:
 ```javascript
 {
@@ -366,9 +379,11 @@ Exemplo de Retorno:
     "motivoIndeferimento": null
 }
 ```
+
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/especializacoes/indeferir/{id}`                               | PUT | Indefere a especialização pendente e realiza envio de email para o servidor informando o motivo do indeferimento|
+
 Exemplo de request:
 ```javascript
 {
