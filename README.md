@@ -37,6 +37,16 @@ Considerações:
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/auth/register`                                 | POST | Registra novo usuário na aplicação|
+
+Exemplo de Request:
+{
+    "login": "kevin-mendes",
+    "password": "123456789",
+    "tipo": "ADMIN"
+}
+
+|  URL |  Método | Descrição |
+|----------|--------------|--------------|
 |`http://localhost:8080/auth/login`                                 | POST | Realiza login do usuário e retorna token que deve ser usado para as demais requisições|
 
 *Servidor*
