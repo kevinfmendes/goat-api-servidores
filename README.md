@@ -19,6 +19,7 @@ Este projeto é parte do teste técnico para a vaga de Desenvolvedor Backend Jr 
 ### Para inicar o projeto:
 - Necessário que a máquina possua PostgreSQL instalado e Java JDK 21.
 - Ajustar o application.properties para o username e senha definidos no seu banco de dados.
+- Criar o banco de dados "goat-api" no banco de dados PostgreSQL/pgAdmin
 
 ## Funcionalidades
 - Cadastro de Servidores / Especializações
@@ -29,7 +30,13 @@ Este projeto é parte do teste técnico para a vaga de Desenvolvedor Backend Jr 
 
 Considerações:
 - Além dos requisitos necessários informados na descrição do teste, tomei a liberdade para a criação da entidade de usuário pela necessidade de aplicar a autenticação e autorização das requisições através da abordagem do JWT.
-- Na entidade de Especializações adicionei o campo de status para definir o estado da especialização como pendente/deferido/indeferido, além de relacionar as classes Servidor x Especialização, para que a criação de  
+- Na entidade de Especializações adicionei o campo de status para definir o estado da especialização como pendente/deferido/indeferido, além de relacionar as classes Servidor x Especialização, para que a criação de uma Especialização esteja vinculada a um Servidor que fez a solicitação.
+- Escolhi o uso de Lombok, mais por uma preferência por um código mais limpo ao invés de aplicar os métodos padrões de cada classe.
+- Usei DTO para as classes de Especialização e Servidor, realizando o mapeamento das mesmas "hardcoded", porém poderia ser utilizado o ObjectMapper da lib Jackson, ou até mesmo o uso de Records para o mapeamento dos objetos.
+- Optei por utilizar a autenticação através do token JWT, portanto somente as requisições de auth/login e auth/register estão liberadas para acesso, os demais endpoint's necessariamente devem conter Authorization e o token gerado através do login no header da requisição.
+- Validações e tratamento de exceções: Optei por trabalhar com exceções customizadas para os casos de cpf/maticula/email previamente existentes no banco de dados, apesar das anotações @unique no atributo da Entidade já tratarem esses casos, optei pelo uso para garantir uma mensagem mais amigável no retorno.
+- Teste unitários: Adicionei as classes de testes para os casos de uso dos services de Especialização e Servidor.
+- Considerações finais: Dado o escopo do teste técnico e a necessidade de conciliar o tempo, priorizei pela entrega do projeto, contudo em outro cenário de dedicação exclusiva aplicaria mais testes, trataria todos os retornos possíveis, além de utilizar docker para a conteinerização do projeto e redis para cache. 
 
 *Endpoints / URL's*
 
