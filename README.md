@@ -40,17 +40,28 @@ Considerações:
 
 Exemplo de Request:
 ```javascript
-{ "some": "json" }
-```
 {
     "login": "kevin-mendes",
     "password": "123456789",
-    "tipo": "ADMIN"
-}
+    "tipo": "PADRAO"
+ }
+```
+Retorno: 
+Usuário criado com sucesso
 
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/auth/login`                                 | POST | Realiza login do usuário e retorna token que deve ser usado para as demais requisições|
+
+Exemplo de Request:
+```javascript
+{
+    "login": "kevin-mendes",
+    "password": "123456789",
+}
+```
+Retorno: 
+eyJhbGciOiJIUzI1NiIsIn (exemplo de token)
 
 *Servidor*
 |  URL |  Método | Descrição |
