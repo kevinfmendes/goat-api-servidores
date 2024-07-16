@@ -394,11 +394,11 @@ Exemplo de request:
 Exemplo de Retorno:
 ```javascript
 {
-    "id": 1,
-    "area": "Engenharia de Software",
+    "id": 2,
+    "area": "Agronomia",
     "tipo": "POS_GRADUACAO",
-    "cargaHoraria": 370,
-    "valorTotal": 20000.0,
+    "cargaHoraria": 360,
+    "valorTotal": 15000.0,
     "servidor": {
         "id": 1,
         "cpf": "123.687.987-00",
@@ -409,7 +409,7 @@ Exemplo de Retorno:
         "sexo": "Feminino",
         "tipo": "TECNICO"
     },
-    "status": "DEFERIDO",
-    "motivoIndeferimento": null
+    "status": "INDEFERIDO",
+    "motivoIndeferimento": "Falta de documentação necessária"
 }
 ```
