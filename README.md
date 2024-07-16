@@ -39,6 +39,9 @@ Considerações:
 |`http://localhost:8080/auth/register`                                 | POST | Registra novo usuário na aplicação|
 
 Exemplo de Request:
+```javascript
+{ "some": "json" }
+```
 {
     "login": "kevin-mendes",
     "password": "123456789",
