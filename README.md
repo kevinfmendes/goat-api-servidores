@@ -33,7 +33,7 @@ Este projeto é parte do teste técnico para a vaga de Desenvolvedor Backend Jr 
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/servidores`                                 | POST | Salva o servidor no banco de dados |
-|`http://localhost:8080/lamppit/listar-todos`                                 | GET | Lista todos os cadastros de clientes presentes no banco de dados |
-|`http://localhost:8080/lamppit/buscar-por-id?id=`                             | GET | Busca de cliente baseado no Id salvo no banco de dados |
-|`http://localhost:8080/lamppit/atualizar-cliente`                             | PUT | Edição de cliente salvo no banco de dados |
-|`http://localhost:8080/lamppit/excluir-por-id?id=`                               | DELETE | Deleta cadastro do cliente |
+|`http://localhost:8080/api/v1/servidores`                                 | GET | Lista todos os servidores presentes no banco de dados |
+|`http://localhost:8080/api/v1/servidores/{id}`                             | GET | Busca de servidor baseado no Id salvo no banco de dados |
+|`http://localhost:8080/api/v1/servidores/{id}`                             | PUT | Edição de servidor salvo no banco de dados |
+|`http://localhost:8080/api/v1/servidores/{id}`                               | DELETE | Deleta cadastro do servidor|
