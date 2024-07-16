@@ -67,7 +67,44 @@ eyJhbGciOiJIUzI1NiIsIn (exemplo de token)
 |  URL |  Método | Descrição |
 |----------|--------------|--------------|
 |`http://localhost:8080/api/v1/servidores`                                 | POST | Salva o servidor no banco de dados |
+Retorno: 
+```javascript
+{
+    "id": 1,
+    "cpf": "123.687.987-00",
+    "email": "danibl26@gmail.com",
+    "matricula": "2024201",
+    "nome": "Dani Botelho",
+    "dataNascimento": "1980-01-01",
+    "sexo": "Feminino",
+    "tipo": "TECNICO"
+}
+```
 |`http://localhost:8080/api/v1/servidores`                                 | GET | Lista todos os servidores presentes no banco de dados |
+```javascript
+[
+    {
+        "id": 1,
+        "cpf": "123.687.987-00",
+        "email": "danibl26@gmail.com",
+        "matricula": "2024201",
+        "nome": "Dani Botelho",
+        "dataNascimento": "1980-01-01",
+        "sexo": "Feminino",
+        "tipo": "TECNICO"
+    },
+    {
+        "id": 2,
+        "cpf": "123.687.987-55",
+        "email": "contato@goatsd.com",
+        "matricula": "2024301",
+        "nome": "Contato Goat",
+        "dataNascimento": "1980-01-01",
+        "sexo": "Feminino",
+        "tipo": "TECNICO"
+    }
+]
+```
 |`http://localhost:8080/api/v1/servidores/{id}`                             | GET | Busca de servidor baseado no Id salvo no banco de dados |
 |`http://localhost:8080/api/v1/servidores/{id}`                             | PUT | Edição de servidor salvo no banco de dados |
 |`http://localhost:8080/api/v1/servidores/{id}`                               | DELETE | Deleta cadastro do servidor|
