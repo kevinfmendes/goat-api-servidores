@@ -21,14 +21,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EspecializacaoServiceImpl implements EspecializacaoService {
 
-    @Autowired
-    private EmailService emailService;
-
-    @Autowired
-    private ServidorService servidorService;
-
+    private final EmailService emailService;
+    private final ServidorService servidorService;
     private final EspecializacaoRepositorio especializacaoRepositorio;
-
     private final EspecializacaoMapper especializacaoMapper;
 
     @Override

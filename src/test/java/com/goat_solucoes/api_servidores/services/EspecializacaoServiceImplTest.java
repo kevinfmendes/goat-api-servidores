@@ -2,6 +2,7 @@ package com.goat_solucoes.api_servidores.services;
 
 import com.goat_solucoes.api_servidores.domain.especializacao.Especializacao;
 import com.goat_solucoes.api_servidores.domain.enums.StatusEspecializacao;
+import com.goat_solucoes.api_servidores.domain.servidor.Servidor;
 import com.goat_solucoes.api_servidores.dto.request.especializacaoRequestDTO.EspecializacaoRequestDTO;
 import com.goat_solucoes.api_servidores.dto.response.especializacaoDTO.EspecializacaoResponseDTO;
 import com.goat_solucoes.api_servidores.repositorios.EspecializacaoRepositorio;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
+@ActiveProfiles("test")
 public class EspecializacaoServiceImplTest {
 
     @Mock
@@ -43,7 +46,10 @@ public class EspecializacaoServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        especializacaoService = new EspecializacaoServiceImpl(especializacaoRepositorio, especializacaoMapper);
+        especializacaoService = new EspecializacaoServiceImpl(emailService,
+                servidorService,
+                especializacaoRepositorio,
+                especializacaoMapper);
     }
 
     @Test
@@ -108,6 +114,12 @@ public class EspecializacaoServiceImplTest {
         Especializacao especializacao = new Especializacao();
         especializacao.setId(id);
         especializacao.setStatus(StatusEspecializacao.PENDENTE);
+
+        Servidor servidor = new Servidor();
+        servidor.setEmail("test@example.com");
+        servidor.setNome("Test User");
+        especializacao.setServidor(servidor);
+
         EspecializacaoResponseDTO dtoEsperado = new EspecializacaoResponseDTO(especializacao);
         dtoEsperado.setId(id);
 
@@ -132,6 +144,12 @@ public class EspecializacaoServiceImplTest {
         Especializacao especializacao = new Especializacao();
         especializacao.setId(id);
         especializacao.setStatus(StatusEspecializacao.PENDENTE);
+
+        Servidor servidor = new Servidor();
+        servidor.setEmail("test@example.com");
+        servidor.setNome("Test User");
+        especializacao.setServidor(servidor);
+
         EspecializacaoResponseDTO dtoEsperado = new EspecializacaoResponseDTO(especializacao);
         dtoEsperado.setId(id);
 
