@@ -45,7 +45,7 @@ public class EspecializacaoServiceImplTest {
     private EspecializacaoServiceImpl especializacaoService;
 
     @BeforeEach
-    void setUp() {
+    void setUp() {git 
         especializacaoService = new EspecializacaoServiceImpl(emailService,
                 servidorService,
                 especializacaoRepositorio,
